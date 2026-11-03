@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi querida Pecas 💛</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0b0b0e;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Luces flotantes de fondo */
+        .lights-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .light {
+            position: absolute;
+            bottom: -50px;
+            background: radial-gradient(circle, rgba(255,230,0,0.8) 0%, rgba(255,180,0,0) 70%);
+            border-radius: 50%;
+            animation: floatUp 6s infinite linear;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-105vh) scale(1.2); opacity: 0; }
+        }
+
+        .container { text-align: center; max-width: 600px; width: 100%; z-index: 10; }
+        
+        /* Títulos en cursiva y amarillo */
+        .love-title {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive, sans-serif;
+            font-size: 3rem;
+            color: #ffe600;
+            margin-bottom: 0px;
+            text-shadow: 0 0 15px rgba(255, 230, 0, 0.5);
+            font-weight: normal;
+        }
+        h1 {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive, sans-serif;
+            font-size: 4.5rem;
+            color: #ffe600;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px rgba(255, 230, 0, 0.6), 0 0 10px rgba(255, 180, 0, 0.4);
+            font-weight: normal;
+        }
+
+        /* Escena del ramo y jarrón */
+        .bouquet-scene {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+            height: 380px;
+        }
+
+        /* Girasoles grandes y detallados */
+        .flowers-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 24px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .cat-sunflower {
+            position: relative;
+            width: 110px;
+            height: 110px;
+        }
+
+        /* Pétalos estilo girasol real */
+        .cat-sunflower::before {
+            content: '';
+            position: absolute;
+            inset: -18px;
+            background: radial-gradient(circle, #ffcc00 50%, #ff8800 100%);
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 22px rgba(255, 204, 0, 0.6);
+            clip-path: polygon(
+                50% 0%, 63% 12%, 78% 6%, 88% 22%, 100% 32%, 
+                94% 50%, 100% 68%, 88% 78%, 78% 94%, 63% 88%, 
+                50% 100%, 37% 88%, 22% 94%, 12% 78%, 0% 68%, 
+                6% 50%, 0% 32%, 12% 22%, 22% 6%, 37% 12%
+            );
+        }
+
+        /* Centro del girasol más cafecito y texturizado */
+        .flower-face-container {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, #3b1e0f 25%, #5e3315 70%);
+            border-radius: 50%;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+            background-image: radial-gradient(#211007 20%, transparent 21%);
+            background-size: 7px 7px;
+        }
+
+        /* Orejitas de gato */
+        .ear-l, .ear-r {
+            position: absolute;
+            top: -22px;
+            width: 0; height: 0;
+            border-left: 13px solid transparent;
+            border-right: 13px solid transparent;
+            border-bottom: 25px solid #d97706;
+            z-index: 3;
+        }
+        .ear-l { left: 12px; transform: rotate(-15deg); }
+        .ear-r { right: 12px; transform: rotate(15deg); }
+
+        /* Contenedor central de la carita para mantener todo alineado perfectamente */
+        .face-details {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 45px;
+            z-index: 4;
+        }
+        
+        /* Ojos y brillito */
+        .eye { 
+            position: absolute; top: 2px; width: 13px; height: 13px; 
+            background-color: #1a1a1a; border-radius: 50%; 
+        }
+        .eye-l { left: 7px; }
+        .eye-r { right: 7px; }
+        .eye-shine {
+            position: absolute; top: 2px; left: 2px;
+            width: 3.5px; height: 3.5px;
+            background-color: #ffffff; border-radius: 50%;
+        }
+
+        /* Nariz */
+        .nose {
+            position: absolute; top: 23px; left: 50%; transform: translateX(-50%);
+            width: 10px; height: 6px; background-color: #f67bd1; border-radius: 50%;
+        }
+
+        /* Boquita tierna estilo dibujo */
+        .mouth {
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 6px;
+        }
+        .mouth::before, .mouth::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 7px;
+            height: 5px;
+            border-bottom: 2px solid #de63c3;
+            border-radius: 0 0 50% 50%;
+        }
+        .mouth::before { left: 0px; }
+        .mouth::after { right: 0px; }
+
+        /* 3 Bigotitos a cada lado */
+        .whiskers {
+            position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+            width: 44px; height: 8px;
+        }
+        .whiskers::before, .whiskers::after {
+            content: ''; position: absolute; width: 14px; height: 1px; background-color: #211007;
+            top: 3px;
+        }
+        .whiskers::before { left: 2px; transform: rotate(8deg); }
+        .whiskers::after { right: 2px; transform: rotate(-8deg); }
+
+        .whiskers-top::before, .whiskers-top::after {
+            content: ''; position: absolute; width: 14px; height: 1px; background-color: #211007;
+            top: -1px;
+        }
+        .whiskers-top::before { left: 1px; transform: rotate(20deg); }
+        .whiskers-top::after { right: 1px; transform: rotate(-20deg); }
+
+        .whiskers-bot::before, .whiskers-bot::after {
+            content: ''; position: absolute; width: 14px; height: 1px; background-color: #211007;
+            top: 7px;
+        }
+        .whiskers-bot::before { left: 1px; transform: rotate(-5deg); }
+        .whiskers-bot::after { right: 1px; transform: rotate(5deg); }
+
+        /* Tallos saliendo unidos del jarrón y abriéndose más en abanico */
+        .stems-container {
+            position: absolute;
+            bottom: 125px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .stem {
+            position: absolute;
+            bottom: 0;
+            width: 6px;
+            height: 135px;
+            background: linear-gradient(to right, #4caf50, #2e7d32);
+            border-radius: 3px;
+            transform-origin: bottom center;
+        }
+        /* Tallos laterales con mayor apertura en abanico */
+        .stem-left { left: 77px; transform: rotate(-30deg); }
+        .stem-mid  { left: 77px; transform: rotate(0deg); }
+        .stem-right { left: 77px; transform: rotate(30deg); }
+
+        /* Jarrón blanco elegante con corazón centrado */
+        .vase-container {
+            position: absolute;
+            bottom: 0;
+            width: 120px;
+            height: 160px;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .vase-neck {
+            width: 45px;
+            height: 25px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            border-left: 2px solid rgba(255, 255, 255, 0.8);
+            border-right: 2px solid rgba(200, 200, 200, 0.8);
+            border-top: 2px solid #ffffff;
+            border-radius: 4px;
+        }
+        .vase-body {
+            width: 120px;
+            height: 135px;
+            background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 100%);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 20px 20px 60px 60px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        
+        /* Corazón perfectamente centrado en el jarrón blanco */
+        .vase-heart {
+            position: relative;
+            width: 28px;
+            height: 26px;
+            background-color: #f03161;
+            transform: rotate(-45deg);
+            box-shadow: 0 0 15px rgba(176, 15, 56, 0.9);
+            z-index: 5;
+        }
+        .vase-heart::before, .vase-heart::after {
+            content: '';
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background-color: #f03161;
+            border-radius: 50%;
+        }
+        .vase-heart::before { top: -14px; left: 0; }
+        .vase-heart::after { left: 14px; top: 0; }
+
+        /* Cuadro de mensaje */
+        .message-box {
+            background: rgba(25, 25, 35, 0.85);
+            border: 1px solid rgba(255, 230, 0, 0.3);
+            padding: 22px; border-radius: 15px; margin-top: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        p { font-size: 1.15rem; line-height: 1.6; color: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <!-- Luces flotantes de fondo -->
+    <div class="lights-container">
+        <div class="light" style="left: 10%; width: 8px; height: 8px; animation-duration: 5s; animation-delay: 0s;"></div>
+        <div class="light" style="left: 25%; width: 12px; height: 12px; animation-duration: 7s; animation-delay: 2s;"></div>
+        <div class="light" style="left: 40%; width: 6px; height: 6px; animation-duration: 4s; animation-delay: 1s;"></div>
+        <div class="light" style="left: 60%; width: 10px; height: 10px; animation-duration: 6s; animation-delay: 3s;"></div>
+        <div class="light" style="left: 75%; width: 7px; height: 7px; animation-duration: 5s; animation-delay: 1.5s;"></div>
+        <div class="light" style="left: 90%; width: 11px; height: 11px; animation-duration: 8s; animation-delay: 0.5s;"></div>
+    </div>
+
+    <div class="container">
+        <div class="love-title">Te Amo</div>
+        <h1>Pecas</h1>
+        
+        <div class="bouquet-scene">
+            <!-- Girasoles grandes y detallados con cara de gatito perfectamente centrada -->
+            <div class="flowers-row">
+                <div class="cat-sunflower" style="transform: rotate(-10deg);">
+                    <div class="ear-l"></div><div class="ear-r"></div>
+                    <div class="flower-face-container">
+                        <div class="face-details">
+                            <div class="eye eye-l"><div class="eye-shine"></div></div>
+                            <div class="eye eye-r"><div class="eye-shine"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                            <div class="whiskers">
+                                <div class="whiskers-top"></div>
+                                <div class="whiskers-bot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-sunflower" style="transform: scale(1.15); z-index: 4;">
+                    <div class="ear-l"></div><div class="ear-r"></div>
+                    <div class="flower-face-container">
+                        <div class="face-details">
+                            <div class="eye eye-l"><div class="eye-shine"></div></div>
+                            <div class="eye eye-r"><div class="eye-shine"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                            <div class="whiskers">
+                                <div class="whiskers-top"></div>
+                                <div class="whiskers-bot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cat-sunflower" style="transform: rotate(10deg);">
+                    <div class="ear-l"></div><div class="ear-r"></div>
+                    <div class="flower-face-container">
+                        <div class="face-details">
+                            <div class="eye eye-l"><div class="eye-shine"></div></div>
+                            <div class="eye eye-r"><div class="eye-shine"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                            <div class="whiskers">
+                                <div class="whiskers-top"></div>
+                                <div class="whiskers-bot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tallos saliendo unidos desde el jarrón y con mayor apertura en abanico -->
+            <div class="stems-container">
+                <div class="stem stem-left"></div>
+                <div class="stem stem-mid"></div>
+                <div class="stem stem-right"></div>
+            </div>
+
+            <!-- Jarrón blanco elegante con corazón en medio -->
+            <div class="vase-container">
+                <div class="vase-neck"></div>
+                <div class="vase-body">
+                    <div class="vase-heart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-box">
+            <p>Me encantan cada una de tus hermosas pecas que iluminan tu hermosa sonrisa y bellos ojos, me encanta mirarte que alegra mi dia entero💌​🐱​.</p>
+            <p>"Se recomienda escuchar Apcalypse de Cigarettes After Sex"</p>
+        </div>
+    </div>
+</body>
+</html>
